@@ -1,250 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Urban Care Pro Services</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-
+<title>Urban Care Pro Services | Ilorin</title>
+<meta name="description" content="Professional cleaning operations in Ilorin: residential, commercial, and institutional. Scoped, priced, and delivered on contract.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#123152;
+    --ink-deep:#0C2A47;
+    --teal:#1A8C93;
+    --teal-light:#3FB3AE;
+    --paper:#FAFAF8;
+    --steel:#455467;
+    --line:#DFE3E6;
+    --card:#FFFFFF;
+    --muted:#8992A0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--steel);
+    line-height:1.55;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,250,248,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1120px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{width:36px;height:36px;border-radius:7px;object-fit:cover;background:var(--ink);}
+  .brand span{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.02rem;color:var(--ink);letter-spacing:-0.01em;}
+  nav ul{display:flex;gap:26px;list-style:none;}
+  nav a{font-size:0.86rem;font-weight:500;color:var(--steel);transition:color .15s;}
+  nav a:hover{color:var(--teal);}
+  .nav-cta{
+    background:var(--teal);color:#fff;
+    padding:10px 18px;border-radius:6px;
+    font-size:0.84rem;font-weight:700;
+    white-space:nowrap;letter-spacing:0.01em;
+  }
+  .nav-cta:hover{background:#157077;}
 
-<script src="https://kit.fontawesome.com/5b8e73d0f0.js" crossorigin="anonymous"></script>
+  .hero{
+    background:linear-gradient(160deg, var(--ink) 0%, var(--ink-deep) 100%);
+    color:var(--paper);
+    padding:64px 0 80px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:3px solid var(--teal);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 34px);
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;position:relative;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;
+    color:var(--teal-light);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;background:var(--teal-light);display:inline-block;border-radius:50%;}
+  .hero h1{
+    font-size:clamp(2.1rem,4.2vw,3.05rem);
+    font-weight:700;line-height:1.08;letter-spacing:-0.02em;
+    color:#fff;margin-bottom:20px;
+  }
+  .hero h1 em{font-style:normal;color:var(--teal-light);}
+  .hero p.lede{font-size:1.04rem;color:#C6D3DB;max-width:47ch;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--teal);color:#fff;
+    padding:14px 26px;border-radius:6px;
+    font-weight:700;font-size:0.92rem;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s, background .15s;
+  }
+  .btn-primary:hover{background:#157077;transform:translateY(-1px);}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.25);
+    color:#fff;padding:14px 22px;border-radius:6px;
+    font-weight:600;font-size:0.92rem;
+  }
+  .btn-ghost:hover{border-color:var(--teal-light);color:var(--teal-light);}
 
+  .ticket{
+    background:var(--paper);color:var(--ink);
+    border-radius:8px;
+    padding:0;
+    box-shadow:0 24px 55px -14px rgba(0,0,0,0.5);
+    position:relative;
+    overflow:hidden;
+  }
+  .ticket-top{background:var(--ink);color:var(--paper);padding:12px 22px;display:flex;justify-content:space-between;align-items:center;}
+  .ticket-top .mono{font-size:0.68rem;letter-spacing:0.08em;color:#A9C0CB;}
+  .stamp{
+    border:1.5px solid var(--teal);color:var(--teal);
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;font-size:0.68rem;letter-spacing:0.07em;text-transform:uppercase;
+    padding:4px 9px;border-radius:4px;
+  }
+  .ticket-body{padding:22px 22px 20px;}
+  .ticket-body .job{font-weight:700;font-size:1.08rem;color:var(--ink);margin-bottom:4px;font-family:'Space Grotesk',sans-serif;}
+  .ticket-body .meta{font-size:0.84rem;color:var(--muted);margin-bottom:16px;}
+  .ticket-rows{display:flex;flex-direction:column;}
+  .ticket-row{display:flex;justify-content:space-between;font-size:0.84rem;border-top:1px solid var(--line);padding:9px 0;}
+  .ticket-row:first-child{border-top:none;}
+  .ticket-row span:first-child{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.76rem;}
+  .ticket-row span:last-child{font-weight:600;color:var(--ink);}
+
+  section{padding:76px 0;}
+  .section-head{max-width:62ch;margin-bottom:44px;}
+  .section-head .eyebrow{color:var(--teal);}
+  .section-head .eyebrow::before{background:var(--teal);}
+  .section-head h2{font-size:clamp(1.55rem,3vw,2.15rem);color:var(--ink);letter-spacing:-0.015em;margin-bottom:12px;}
+  .section-head p{color:var(--steel);font-size:0.98rem;}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .about-grid p{margin-bottom:15px;font-size:0.98rem;}
+  .stat-row{display:flex;gap:34px;margin-top:26px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px;}
+  .stat b{display:block;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.7rem;color:var(--ink);}
+  .stat span{font-size:0.78rem;color:var(--muted);}
+  .about-photo{background:var(--card);border:1px solid var(--line);overflow:hidden;border-radius:8px;}
+  .about-photo img{width:100%;height:340px;object-fit:cover;}
+
+  /* manifest table */
+  .manifest{border:1px solid var(--line);background:var(--card);border-radius:8px;overflow:hidden;}
+  .manifest-row{
+    display:grid;grid-template-columns:74px 1fr auto;gap:18px;align-items:center;
+    padding:20px 22px;border-bottom:1px solid var(--line);
+  }
+  .manifest-row:last-child{border-bottom:none;}
+  .manifest-code{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--teal);font-weight:600;}
+  .manifest-name{font-weight:700;color:var(--ink);font-size:1rem;margin-bottom:3px;font-family:'Space Grotesk',sans-serif;}
+  .manifest-desc{font-size:0.86rem;color:var(--steel);}
+  .manifest-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;
+    color:var(--teal);border:1px solid var(--teal);padding:4px 9px;border-radius:4px;
+    white-space:nowrap;text-transform:uppercase;
+  }
+  @media (max-width:640px){.manifest-row{grid-template-columns:1fr;}.manifest-tag{justify-self:start;}}
+
+  /* gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .gallery-item{border:1px solid var(--line);background:var(--card);border-radius:8px;overflow:hidden;}
+  .gallery-item img{width:100%;height:180px;object-fit:cover;}
+  .gallery-cap{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;letter-spacing:0.04em;color:var(--muted);padding:9px 10px;text-transform:uppercase;}
+
+  /* protocol list */
+  .protocol-band{background:linear-gradient(160deg, var(--ink) 0%, var(--ink-deep) 100%);color:var(--paper);}
+  .protocol-band .section-head .eyebrow{color:var(--teal-light);}
+  .protocol-band .section-head .eyebrow::before{background:var(--teal-light);}
+  .protocol-band .section-head h2{color:#fff;}
+  .protocol-band .section-head p{color:#C6D3DB;}
+  .protocol-list{display:flex;flex-direction:column;}
+  .protocol-item{
+    display:grid;grid-template-columns:56px 1fr;gap:22px;
+    padding:24px 0;border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .protocol-item:last-child{border-bottom:1px solid rgba(255,255,255,0.14);}
+  .protocol-num{font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--teal-light);font-weight:600;}
+  .protocol-item h3{font-size:1rem;color:#fff;margin-bottom:6px;font-weight:600;}
+  .protocol-item p{font-size:0.88rem;color:#B9C6CF;max-width:56ch;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .contact-card{background:var(--card);border:1px solid var(--line);padding:30px;border-radius:8px;}
+  .contact-card h3{color:var(--ink);font-size:1.05rem;margin-bottom:18px;font-family:'Space Grotesk',sans-serif;}
+  .c-row{display:flex;gap:12px;margin-bottom:16px;font-size:0.92rem;}
+  .c-row .k{width:20px;color:var(--teal);font-weight:700;}
+  .social-row{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;}
+  .social-pill{border:1px solid var(--line);padding:9px 16px;font-size:0.82rem;font-weight:600;color:var(--ink);border-radius:6px;}
+  .social-pill:hover{border-color:var(--teal);color:var(--teal);}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-size:0.8rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
 </head>
-
 <body>
 
 <header>
- <nav class="navbar navbar-expand-lg bg-info">
-        <div class="container-fluid"> 
-          <div class=" d-flex">
-           <img src="images/urbanlogo.jpeg" alt="Logo" width="32 " height="30">
-            <h2>Urban Care Pro</h2>
-          </div>
-          </div>
-          <div class="collapse navbar-collapse me-5 container-fluid" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url "YourList" %}">About</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Contact
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url "aboutme" %}">Instagram</a></li>
-             <li><a class="dropdown-item" href="{% url "aboutme" %}">Whatsapp</a></li>
-          </ul>
-        </li>
-</nav>
-
-
-<section class="hero" id="home">
-
-<div class="hero-text">
-
-<h1>Professional Cleaning Services</h1>
-
-<p>Effortless Cleaning. Spotless Results.</p>
-
-<a href="https://wa.me/2347034795930?text=Hello%20Urban%20Care%20Pro,%20I%20would%20like%20to%20book%20a%20cleaning%20service."
-class="btn"
-target="_blank">
-
-Book Now
-
-</a>
-
-</div>
-
-</section>
-
+  <div class="nav-inner">
+    <a href="#home" class="brand">
+      <img src="images/urbanlogo.jpeg" alt="Urban Care Pro logo">
+      <span>Urban Care Pro</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/2347034795930?text=Hello%20Urban%20Care%20Pro,%20I%20would%20like%20to%20book%20a%20cleaning%20service." target="_blank" rel="noopener">Book on WhatsApp</a>
+  </div>
 </header>
 
-<section id="about">
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Ilorin &middot; Cleaning Operations</div>
+      <h1>Effortless cleaning.<br><em>Spotless</em> results, on contract.</h1>
+      <p class="lede">We treat every job like a work order: scoped, priced, and signed off before we start. From single apartments to full institutional facilities across Ilorin.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://wa.me/2347034795930?text=Hello%20Urban%20Care%20Pro,%20I%20would%20like%20to%20book%20a%20cleaning%20service." target="_blank" rel="noopener">Book Now →</a>
+        <a class="btn-ghost" href="#services">See the manifest</a>
+      </div>
+    </div>
 
-<h2>About Us</h2>
-
-<p>
-
-Urban Care Pro Services is committed to providing reliable,
-
-professional and affordable cleaning solutions for homes,
-
-offices and businesses throughout Ilorin.
-
-</p>
-
+    <div class="ticket">
+      <div class="ticket-top">
+        <span class="mono">SERVICE RECORD · REF UCP-2026-014</span>
+        <span class="stamp">Completed</span>
+      </div>
+      <div class="ticket-body">
+        <div class="job">Sobi Barracks Officers' Mess</div>
+        <div class="meta">Full deep cleaning contract</div>
+        <div class="ticket-rows">
+          <div class="ticket-row"><span>CLIENT TYPE</span><span>Institutional</span></div>
+          <div class="ticket-row"><span>SCOPE</span><span>Full-facility deep clean</span></div>
+          <div class="ticket-row"><span>STATUS</span><span>Delivered on schedule</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="services">
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <img src="images/clean2.jpg" alt="Urban Care Pro cleaning in progress">
+    </div>
+    <div>
+      <div class="eyebrow">About</div>
+      <h2 style="color:var(--ink);font-size:1.85rem;margin-bottom:16px;letter-spacing:-0.015em;">Run like an operation, not a favor.</h2>
+      <p>Urban Care Pro handles cleaning the way a contractor handles a build: a written scope, a fair quote, and a crew that actually shows up.</p>
+      <p>We've cleaned single apartments, and we've deep-cleaned an Officers' Mess for the Nigerian Army. Same standard, every time. No shortcuts on the smaller jobs.</p>
+      <div class="stat-row">
+        <div class="stat"><b>06</b><span>Service lines</span></div>
+        <div class="stat"><b>100%</b><span>Satisfaction focus</span></div>
+        <div class="stat"><b>24H</b><span>Response time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Our Services</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Residential Cleaning</h3>
-
-<p>Deep cleaning for apartments and homes.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Commercial Cleaning</h3>
-
-<p>Office and workplace cleaning.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Laundry Services</h3>
-
-<p>Pickup and delivery available.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Move In / Move Out</h3>
-
-<p>Complete property cleaning.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Fumigation</h3>
-
-<p>Pest control and fumigation.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Car Detailing</h3>
-
-<p>Interior and exterior detailing.</p>
-
-</div>
-
-</div>
-
+<section id="services" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Six service lines. One standard.</h2>
+      <p>Every line item priced and scoped before we start. No surprise charges on the day.</p>
+    </div>
+    <div class="manifest">
+      <div class="manifest-row">
+        <span class="manifest-code">RC-01</span>
+        <div><div class="manifest-name">Residential Cleaning</div><div class="manifest-desc">Deep cleaning for apartments and homes, top to bottom.</div></div>
+        <span class="manifest-tag">Available</span>
+      </div>
+      <div class="manifest-row">
+        <span class="manifest-code">CC-02</span>
+        <div><div class="manifest-name">Commercial Cleaning</div><div class="manifest-desc">Office and workplace cleaning that keeps operations running.</div></div>
+        <span class="manifest-tag">Available</span>
+      </div>
+      <div class="manifest-row">
+        <span class="manifest-code">LS-03</span>
+        <div><div class="manifest-name">Laundry Services</div><div class="manifest-desc">Pickup and delivery available, on your schedule.</div></div>
+        <span class="manifest-tag">Available</span>
+      </div>
+      <div class="manifest-row">
+        <span class="manifest-code">MV-04</span>
+        <div><div class="manifest-name">Move In / Move Out</div><div class="manifest-desc">Complete property cleaning before keys change hands.</div></div>
+        <span class="manifest-tag">Available</span>
+      </div>
+      <div class="manifest-row">
+        <span class="manifest-code">FM-05</span>
+        <div><div class="manifest-name">Fumigation</div><div class="manifest-desc">Pest control and fumigation for lasting protection.</div></div>
+        <span class="manifest-tag">Available</span>
+      </div>
+      <div class="manifest-row">
+        <span class="manifest-code">CD-06</span>
+        <div><div class="manifest-name">Car Detailing</div><div class="manifest-desc">Interior and exterior detailing, done right.</div></div>
+        <span class="manifest-tag">Available</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="gallery">
-
-<h2>Gallery</h2>
-
-<div class="gallery">
-
-<img src="images/clean2.jpg">
-
-<img src="images/laundry.jpg">
-
-<img src="images/fumigation.jpg">
-
-<img src="images/glassclean.jpg">
-
-</div>
-
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Field Record</div>
+      <h2 style="color:var(--ink);">Documented, not staged.</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/clean2.jpg" alt="Residential deep clean"><div class="gallery-cap">Exhibit 01 · Deep Clean</div></div>
+      <div class="gallery-item"><img src="images/laundry.jpg" alt="Laundry service"><div class="gallery-cap">Exhibit 02 · Laundry</div></div>
+      <div class="gallery-item"><img src="images/fumigation.jpg" alt="Fumigation service"><div class="gallery-cap">Exhibit 03 · Fumigation</div></div>
+      <div class="gallery-item"><img src="images/glassclean.jpg" alt="Glass and window cleaning"><div class="gallery-cap">Exhibit 04 · Glass & Window</div></div>
+    </div>
+  </div>
 </section>
 
-
-<section class="why">
-
-<h2>Why Choose Us?</h2>
-
-<div class="features">
-
-<div>
-
-<h3>Experienced Team</h3>
-
-</div>
-
-<div>
-
-<h3>Affordable Prices</h3>
-
-</div>
-
-<div>
-
-<h3>Fast Response</h3>
-
-</div>
-
-<div>
-
-<h3>100% Satisfaction</h3>
-
-</div>
-
-</div>
-
+<section class="protocol-band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How We Operate</div>
+      <h2>Four steps, no surprises.</h2>
+    </div>
+    <div class="protocol-list">
+      <div class="protocol-item">
+        <span class="protocol-num">01</span>
+        <div><h3>Scope the job</h3><p>Site walkthrough or a clear description from you. We quote against the actual job, not a guess.</p></div>
+      </div>
+      <div class="protocol-item">
+        <span class="protocol-num">02</span>
+        <div><h3>Confirm in writing</h3><p>Scope and price locked in before we start. A 70% deposit secures your date.</p></div>
+      </div>
+      <div class="protocol-item">
+        <span class="protocol-num">03</span>
+        <div><h3>Execute on schedule</h3><p>Trained crew, same standard whether it's a one-bedroom flat or a full facility.</p></div>
+      </div>
+      <div class="protocol-item">
+        <span class="protocol-num">04</span>
+        <div><h3>Walkthrough sign-off</h3><p>Nothing is marked closed until you've confirmed it in person.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-
-<h2>Contact Us</h2>
-
-<form>
-
-<input type="text" placeholder="Full Name">
-
-<input type="email" placeholder="Email">
-
-<textarea placeholder="Your Message"></textarea>
-
-<a href="mailto:info.urbancarepro@gmail.com" class="btn">
-    Send Message
-</a>
-
-</form>
-
-<div class="details">
-
-<p>📍 House 19, Olayinwole Street, Tanke, Ilorin.</p>
-
-<p>📞 07034795930</p>
-
-<p>📧 info.urbancarepro@gmail.com</p>
-
-</div>
-
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="color:var(--ink);font-size:1.85rem;margin-bottom:16px;letter-spacing:-0.015em;">Ready to book, or need a quote?</h2>
+      <p>WhatsApp gets the fastest response. For quotes, contracts, and institutional bookings, email works better.</p>
+      <div class="social-row">
+        <a class="social-pill" href="https://wa.me/2347034795930" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="social-pill" href="mailto:info.urbancarepro@gmail.com">Email</a>
+        <a class="social-pill" href="https://www.instagram.com/urbancarepro_kleaning" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Contact Details</h3>
+      <div class="c-row"><span class="k">📍</span><span>House 19, Olayinwole Street, Tanke, Ilorin.</span></div>
+      <div class="c-row"><span class="k">📞</span><span>0703 479 5930</span></div>
+      <div class="c-row"><span class="k">📧</span><span>info.urbancarepro@gmail.com</span></div>
+    </div>
+  </div>
 </section>
 
 <footer>
-
-<p>© 2026 Urban Care Pro Services</p>
-
+  © 2026 URBAN CARE PRO SERVICES
 </footer>
 
-<a class="whatsapp"
-
-href="https://wa.me/2347034795930"
-
-target="_blank">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-<script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
-
 </html>
